@@ -1,18 +1,23 @@
 <!--
 Sync Impact Report
-- Version change: 2.2.0 → 2.3.0
-- Modified principles: Governance (documentation updates MUST consult root-level `CONTRIBUTING.md` prior to changes); Gameplay & Design Constraints (player interventions limited to road/building add/change/delete)
+- Version change: 2.4.0 → 2.5.0
+- Modified principles: Governance (documentation translations MUST mirror English paths under `.docs-human-ja`, including `.docs-ai-agent` tree at `.docs-human-ja/.docs-ai-agent/...`)
 - Added sections: none
 - Removed sections: none
 - Templates checked:
-  - .specify/templates/plan-template.md ✅ updated (player intervention scope + doc update requirement captured)
-  - .specify/templates/spec-template.md ✅ updated (player intervention scope + doc update requirement captured)
-  - .specify/templates/tasks-template.md ✅ updated (task scope reminder + doc update requirement)
+  - .specify/templates/plan-template.md ✅ no change needed
+  - .specify/templates/spec-template.md ✅ no change needed
+  - .specify/templates/tasks-template.md ✅ no change needed
   - .specify/templates/commands/ ⚠ directory missing in repo (no command templates to update)
+- Templates updated for doc path guidance:
+  - CONTRIBUTING.md ✅
+  - .docs-human-ja/CONTRIBUTING.ja.md ✅
+  - .docs-human-ja/README.ja.md ✅
+  - .docs-ai-agent/README.md ✅
 - Follow-up TODOs:
   - TODO(BUILD_CONFIG): add Cloudflare Pages CI job template for `src/apps/mytownmap` if not present
   - TODO(PR_TEMPLATE): add constitution compliance checklist and docs verification item to PR template
---> 
+-->
 
 # MyTownMap Constitution
 <!-- Project: MyTownMap - 2D traffic congestion simulation game (browser SPA) -->
@@ -135,6 +140,7 @@ Sync Impact Report
 - Unit tests MUST cover pure systems and logic (e.g., routing, vehicle physics, movement decisions, scheduling) with deterministic inputs and seeds.
 - Integration and simulation tests SHOULD exercise multi-agent scenarios, congestion creation/removal, and large-map performance.
 - Support deterministic simulation runs via seeding so that recorded seeds reproduce identical behavior for debugging and regression tests.
+  - UI/E2E tests MUST use Playwright. Alternative UI/E2E frameworks require governance approval.
 
 8. **Governance for Additions or Exceptions**
 - Any deviation from the required toolchain or permitted services (e.g., adding third-party analytics, changing ECS runtime) MUST be documented in a proposal, justify the added risk/cost, and be approved by governance before merging.
@@ -143,8 +149,9 @@ Sync Impact Report
 ## Governance
 
 - Documentation updates: Before updating any development documentation, consult the repository-root `CONTRIBUTING.md` and follow its guidance; reference it in the PR description.
+- Documentation translations: Japanese translations MUST mirror the English path under `.docs-human-ja`, preserving the full subtree. Files under `.docs-ai-agent/...` have translations under `.docs-human-ja/.docs-ai-agent/...` with a `.ja.md` suffix.
 - This constitution supersedes informal or ad-hoc practices; amendments require documentation and a migration plan where applicable.
 - All PRs and code reviews must verify compliance with the constitution where relevant; complexity must be justified in PR descriptions.
 - Non-compliance or deviations must be documented in the PR with a rationale and an explicit TODO for future alignment.
 
-**Version**: 2.3.0 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-29
+**Version**: 2.5.0 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30

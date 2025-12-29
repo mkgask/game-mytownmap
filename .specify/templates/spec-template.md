@@ -8,8 +8,8 @@
 
 **App Location (fixed)**: `src/apps/mytownmap`  
 **Package Manager (REQUIRED)**: bun  
-**Mandated Stack**: PixiJS (2D rendering), bitECS (ECS runtime), bun (build/package), Cloudflare Pages (hosting), New Relic (errors only)  
-**Architecture Focus**: ECS-first, deterministic/seeded simulation; vehicles stay on roads, cannot overlap; congestion mitigation is the goal; daily schedule (residence→factory/shop in morning, factory/shop→random shop at noon, shop→residence in evening) with workplace/shop capacity enforced; player interventions are limited to adding, modifying, or removing roads and buildings.
+**Mandated Stack**: PixiJS (2D rendering), bitECS (ECS runtime), bun (build/package), Cloudflare Pages (hosting), New Relic (errors only), Playwright (UI/E2E tests)  
+**Architecture Focus**: ECS-first, deterministic/seeded simulation; vehicles stay on roads, cannot overlap; congestion mitigation is the goal; daily schedule (residence→factory/shop in morning, factory/shop→random shop at noon, shop→residence in evening) with workplace/shop capacity enforced; player interventions are limited to adding, modifying, or removing roads and buildings; UI/E2E tests use Playwright.
 
 ## Constitution Alignment Checklist *(fill before drafting stories)*
 
@@ -19,6 +19,7 @@
 - Use PixiJS for rendering; vehicles drive only on roads, never overlap; congestion is the primary challenge; enforce daily movement schedule and capacity limits for shops/factories.
 - Player interventions are limited to adding, modifying, or removing roads and buildings; anything beyond this scope needs governance approval.
 - Observability: New Relic for errors only; Cloudflare Web Analytics optional/privacy-conscious; configuration is externalized (no hardcoded secrets/URLs).
+- UI/E2E testing MUST use Playwright; alternative UI/E2E frameworks need governance approval.
 
 ## User Scenarios & Testing *(mandatory)*
 

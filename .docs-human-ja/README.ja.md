@@ -4,11 +4,11 @@
 
 - **重要:** AIエージェントが動作する際の思考、設計上のメモ、内部ノート、および開発ドキュメントは**英語で作成**してください。日本語ファイルは英語の翻訳として配置し、英語原稿を置き換えないでください。
 
-- **RunBook（運用手順書）について:** すべての作業や運用タスクは `.docs-ai-agent/runbooks` 配下の RunBook を使って管理してください。`000-runbook-template.md` をコピーして編集し、3桁番号と短いハイフン付きタイトル（例: `001-deploy-website.md`）で命名し、`1-100/`、`101-200/` のように100番区切りのディレクトリに配置してください。RunBook も日本語訳の対象です（`.docs-human-ja/runbooks/... .ja.md`）。
+**重要:** 開発ドキュメントは `.docs-ai-agent`（英語）と `.docs-human-ja`（日本語訳）で管理してください。speckit のフィーチャードキュメントは `.docs-ai-agent/spaces/[###-feature-name]/` に配置し、日本語訳は `.docs-human-ja/.docs-ai-agent/spaces/[###-feature-name]/` に同じ構造で配置してください。
 
 **必須ルール（厳守）:**
 
-- 開発用ドキュメントは `.docs-human-ja` 配下に、英語版のパスを模倣した構造で配置し、ファイル名の末尾に `.ja.md` を付けてください。例: 英語が `.docs-ai-agent/guides/setup.md` の場合は `.docs-human-ja/guides/setup.ja.md` とします。
+- 開発用ドキュメントは `.docs-human-ja` 配下に、英語版のパスを模倣した構造で配置し、ファイル名の末尾に `.ja.md` を付けてください。例: 英語が `.docs-ai-agent/guides/setup.md` の場合は `.docs-human-ja/.docs-ai-agent/guides/setup.ja.md` とします。
 - 英語版は `.docs-ai-agent` に、翻訳は `.docs-human-ja` にそれぞれ配置してください。
 - 英語版の更新があれば日本語版も、同じ意味を持つ内容で必ず更新してください。ニュアンスはできる限り再現してください。
 - 英語ドキュメントは1ファイルあたり概ね300行を目安とし、250行を越えたら分割を検討してください（日本語訳に行数制限はありません）。

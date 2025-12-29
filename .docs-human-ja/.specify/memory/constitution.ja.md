@@ -1,13 +1,13 @@
 <!--
 Sync Impact Report
-- Version change: 2.2.0 → 2.3.0
-- Modified principles: ガバナンス（開発ドキュメントの更新はリポジトリルートの `CONTRIBUTING.md` を必ず参照することを追加）; ゲームプレイと設計制約（プレイヤー介入範囲を道路・建物の追加/変更/削除に限定）
+- Version change: 2.3.0 → 2.4.0
+- Modified principles: テスト・決定性・再現性（UI/E2E テストは Playwright を必須とする）; ガバナンス（開発ドキュメント更新時はルートの `CONTRIBUTING.md` を参照）
 - Added sections: none
 - Removed sections: none
 - Templates checked:
-  - .specify/templates/plan-template.md ✅ 介入範囲とドキュメント更新要件を反映
-  - .specify/templates/spec-template.md ✅ 介入範囲とドキュメント更新要件を反映
-  - .specify/templates/tasks-template.md ✅ 介入範囲リマインダーとドキュメント更新要件を追記
+  - .specify/templates/plan-template.md ✅ Playwright必須とドキュメント更新要件を反映
+  - .specify/templates/spec-template.md ✅ Playwright必須とドキュメント更新要件を反映
+  - .specify/templates/tasks-template.md ✅ Playwright必須とドキュメント更新要件を反映
   - .specify/templates/commands/ ⚠ ディレクトリ不在（更新対象なし）
 - Follow-up TODOs:
   - TODO(BUILD_CONFIG): `src/apps/mytownmap` 用の Cloudflare Pages CI ジョブテンプレートを追加する
@@ -134,6 +134,7 @@ Sync Impact Report
 - 単体テストは純粋なシステム／ロジック（経路選択、車両挙動、移動判断、スケジューリング等）をシード付きの決定的入力で網羅する。
 - 統合／シミュレーションテストでは多エージェント、渋滞生成と解消、大規模マップ性能を確認する。
 - シード指定で同一挙動を再現できる決定論的シミュレーション実行をサポートし、デバッグやリグレッションに活用する。
+- UI/E2E テストは Playwright を必須とする。他のUI/E2Eフレームワークを使う場合はガバナンス承認が必要。
 
 8. **追加／例外のガバナンス**
 - 必須ツールチェインや許可サービスから逸脱する場合（例: 他社アナリティクスの追加、別 ECS への変更）は、リスク／コストを明記した提案を作成し、承認を得てからマージする。
@@ -146,4 +147,4 @@ Sync Impact Report
 - すべてのPRとコードレビューでは関連する範囲で本憲章への準拠を検証すること。複雑性はPR説明で正当化すること
 - 準拠しない実装や逸脱はPRに理由と将来の整合化のための明示的なTODOを記載すること
 
-**Version**: 2.3.0 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-29
+**Version**: 2.4.0 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30

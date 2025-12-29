@@ -1,0 +1,5 @@
+{
+  "name": "game-mytownmap",
+  "private": true,
+  "workspaces": ["src/apps/*" ]
+}

@@ -5,7 +5,7 @@ description: "Task list template for feature implementation"
 
 # Tasks: [FEATURE NAME]
 
-**Input**: Design documents from `/specs/[###-feature-name]/`
+**Input**: Design documents from `.docs-ai-agent/spaces/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
 **Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
@@ -13,6 +13,8 @@ description: "Task list template for feature implementation"
 **Scope Guard**: Player-facing work must stay within road/building add/change/delete interventions; other interaction patterns need governance approval.
 
 **Doc update rule**: When updating any development documentation, consult the repository-root `CONTRIBUTING.md` first and follow its guidance; include a reference in your PR.
+
+**UI/E2E testing**: Use Playwright for browser-facing tests; other UI/E2E frameworks require governance approval.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 

@@ -30,7 +30,7 @@ MyTownMap is a browser-based 2D traffic-congestion simulation game built as a si
 - `src/packages/` — shared packages (only if justified for reuse)
 - `.specify/` — specification templates and constitution
 - `.docs-human-ja/` — human-readable Japanese documentation
-- `scripts/` — helper scripts (documentation and runbook checks)
+- `scripts/` — helper scripts (documentation checks)
 
 ## Documentation & Contribution
 - Before updating development documentation, read the root `CONTRIBUTING.md` and follow its guidance; reference it in your PR.
