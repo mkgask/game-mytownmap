@@ -1,14 +1,19 @@
 <!--
 Sync Impact Report
-- Version change: 2.3.0 → 2.4.0
-- Modified principles: テスト・決定性・再現性（UI/E2E テストは Playwright を必須とする）; ガバナンス（開発ドキュメント更新時はルートの `CONTRIBUTING.md` を参照）
+- Version change: 2.6.0 → 2.6.1
+- Modified principles: ガバナンス（翻訳ルールを `.docs-human-ja/` のルートパスミラー方式に統一し、`.docs-ai-agent` 言及を削除）
 - Added sections: none
 - Removed sections: none
-- Templates checked:
-  - .specify/templates/plan-template.md ✅ Playwright必須とドキュメント更新要件を反映
-  - .specify/templates/spec-template.md ✅ Playwright必須とドキュメント更新要件を反映
-  - .specify/templates/tasks-template.md ✅ Playwright必須とドキュメント更新要件を反映
-  - .specify/templates/commands/ ⚠ ディレクトリ不在（更新対象なし）
+- Templates checked/updated:
+  - .specify/templates/plan-template.md ✅
+  - .specify/templates/tasks-template.md ✅
+  - .docs-human-ja/.specify/templates/plan-template.ja.md ✅
+  - .docs-human-ja/.specify/templates/tasks-template.ja.md ✅
+  - CONTRIBUTING.md ✅
+  - .docs-human-ja/CONTRIBUTING.ja.md ✅
+  - .docs-human-ja/README.ja.md ✅
+- Runtime docs/scripts:
+  - scripts/check_docs_sync.py ✅ （リポジトリルートからのパスを `.docs-human-ja/` へミラー。`.docs-ai-agent` 依存なし）
 - Follow-up TODOs:
   - TODO(BUILD_CONFIG): `src/apps/mytownmap` 用の Cloudflare Pages CI ジョブテンプレートを追加する
   - TODO(PR_TEMPLATE): 憲章準拠チェックリストとドキュメント検証項目を PR テンプレートに追加する
@@ -87,11 +92,12 @@ Sync Impact Report
 - 製品は **2D ブラウザプレイ可能な交通・渋滞シミュレーションゲーム** であり、渋滞緩和が目的。
 - **マップと配置**: 道路を描画でき、車両は道路のみ走行可。建物（住宅・商店・工場）は道路に隣接して配置する。
 - **エージェントと移動ルール**:
-  - NPC（住民）は必ず1つの住宅に所属し、必要に応じて特定の商店または工場（職場）に所属する。
-  - 日次移動スケジュール:
-    - 朝→昼: 住宅から割り当てられた工場または商店へ車で移動（出勤）。
-    - 昼→夕方: 工場または商店から、所属に関係なくランダムに選ばれた1軒の商店へ車で移動（均等確率）。
-    - 夕方→夜: 商店から住宅へ車で帰宅。
+  - NPC（住民）は必ず1つの住宅に所属し、必要に応じて特定の商店または工場を **Workplace** として持つ。商店は (a) 職場としての **WorkplaceShop**（収容上限あり）と、(b) 買い物先としての **ShoppingDestinationShop**（ランダム選択・収容上限なし）の二役を持ち、混同してはならない。
+  - 日次のコア行動（名称が優先契約。時間帯は二次概念で、後から変更し得る）:
+    - **CommuteToWork**: 住宅 → 割り当て職場（工場または WorkplaceShop）。
+    - **ShoppingTrip**: 職場 → ランダムに選ばれた ShoppingDestinationShop（WorkplaceShop 割当と独立）。
+    - **ReturnHome**: 商店 → 割り当て住宅。
+  - 時間帯をモデル化する場合は典型的に朝/昼/夕方に対応させるが、行動の順序こそが主要な契約であり、時間の扱いが変わっても順序は維持すること。
   - 商店と工場には **就業可能人数上限** があり、割り当ては上限を尊重する。
 - **物流**:
   - 各工場は1日に必ず1台の配送車を商店へ出す（行き先はランダムまたは設計で決める）。
@@ -143,8 +149,9 @@ Sync Impact Report
 ## ガバナンス
 
 - ドキュメント更新: 開発ドキュメントを更新する際は、必ずリポジトリルートの `CONTRIBUTING.md` を参照し、その指示に従ってください。PRの説明に参照を記載してください。
+- ドキュメント翻訳: 日本語訳は `.docs-human-ja/` 配下に、英語Markdownのリポジトリルートからのパスをそのまま模倣し、ファイル名末尾を `.ja.md` にして配置してください。英語ドキュメントの配置場所は固定ではありません。
 - 本憲章は非公式／場当たり的な慣習に優先する。改定は文書化と必要に応じた移行計画を伴うこと
 - すべてのPRとコードレビューでは関連する範囲で本憲章への準拠を検証すること。複雑性はPR説明で正当化すること
 - 準拠しない実装や逸脱はPRに理由と将来の整合化のための明示的なTODOを記載すること
 
-**Version**: 2.4.0 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30
+**Version**: 2.6.1 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30

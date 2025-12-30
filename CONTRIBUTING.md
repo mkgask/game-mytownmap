@@ -5,9 +5,8 @@ This repository follows a strict pattern for development documentation used by t
 Key points:
 
 - AI agent 'thinking' and all development documentation should be authored in English; Japanese files are translations that mirror the English originals.
-- Author development docs under `.docs-ai-agent` as `*.md` files. (speckit feature docs live under `.docs-ai-agent/spaces/[###-feature-name]/`.)
+- Place English docs where they make sense for the project (e.g., repo root `README.md`, `docs/`, `specs/`). For every English Markdown file, add a Japanese translation under `.docs-human-ja/` that mirrors the path from the repository root and uses the `.ja.md` suffix (e.g., `docs/guides/foo.md` → `.docs-human-ja/docs/guides/foo.ja.md`).
 - Keep each English doc around ~300 lines; split if the file exceeds 250 lines.
-- Add a Japanese translation under `.docs-human-ja` that mirrors the English path and has the `.ja.md` suffix (e.g., `.docs-ai-agent/guides/foo.md` → `.docs-human-ja/.docs-ai-agent/guides/foo.ja.md`).
 - **MANDATORY:** When updating documentation, you MUST update both the English and Japanese versions to ensure they convey the same meaning and intent. For larger or nuanced changes, include in the PR description which translation was updated and who verified it.
 
 PR checklist (include before marking PR ready for review):
