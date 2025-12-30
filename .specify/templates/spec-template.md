@@ -20,6 +20,7 @@
 - Player interventions are limited to adding, modifying, or removing roads and buildings; anything beyond this scope needs governance approval.
 - Observability: New Relic for errors only; Cloudflare Web Analytics optional/privacy-conscious; configuration is externalized (no hardcoded secrets/URLs).
 - UI/E2E testing MUST use Playwright; alternative UI/E2E frameworks need governance approval.
+- Game Code Structure matrix is enforced: one-way `app/usecase → feature → infrastructure`, no cross-feature calls (usecase only), UI read-only against ECS state (mutations via usecase → ECS/system), persistence only via `infrastructure/persistence` DTOs, routing in `feature/routing` with selection in `usecase`, seeded PRNG in `feature/rng`, config/env/constants in `feature/config`, assets in `infrastructure/assets`, Pixi/UI in `infrastructure/ui`/`ui/pixi`/`ui/screens`/`ui/hud`.
 
 ## User Scenarios & Testing *(mandatory)*
 

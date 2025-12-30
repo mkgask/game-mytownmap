@@ -32,19 +32,24 @@ MyTownMap is a browser-based 2D traffic-congestion simulation game built as a si
 - `.docs-human-ja/` — human-readable Japanese documentation
 - `scripts/` — helper scripts (documentation checks)
 
-## Game Code Structure (src/apps/mytownmap)
-- `bootstrap/` — app entry wiring, configuration loading, seed/init state
-- `routing/` — screen/scene routing (title, config, game)
-- `foundation/` — render loop + simulation tick orchestration and shared runtime wiring
-- `usecase/` — application flows coordinating feature modules
-- `feature/` — per-feature logic using primitives/infrastructure
-- `primitives/` — shared entities and value objects reused by features
-- `utilities/` — shared helpers/utilities reused across modules
-- `infrastructure/` — view, input, IndexedDB adapters (shared)
+## Game Code Structure (matrix: game element × program layer)
 
-Screens: title, config, game. Title/config can run as plain web screens, but to keep things consistent without extra frameworks, you may also run them inside the game loop if that keeps the code simpler.
+Layer model
+- Caller: `app/` (entry, DI), `usecase/` (use-case orchestration).
+- Callee: `feature/` (domain logic/ECS/routing/config), `infrastructure/` (UI/Pixi, IndexedDB, assets).
+- Dependency direction: one-way `app/usecase → feature → infrastructure`. No cross-feature calls (go via usecase). UI reads ECS state only; mutations flow usecase → ECS/system. Persistence goes through DTOs only.
 
-Dependencies flow top-to-bottom by default; dependency inversion is allowed where appropriate (e.g., ports/adapters).
+| Layer \ Element | Seed & Config | Map / Roads / Buildings | Routing (Easy/Normal/Hard) | Residents / Vehicles / Delivery | Day-Cycle | Persistence | UI / Screens | Assets |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| app / usecase (caller) | `src/apps/mytownmap/src/app/*`, `src/apps/mytownmap/src/usecase/*`<br>DI, boot, mode selection, orchestrating use cases | Issue road/building commands from use cases | Choose route/lane mode and delegate to feature | Trigger schedule progress and commands | Trigger daily cycle | Call save/load | Screen routing and input handoff | Instruct asset loading |
+| feature (callee) | `src/apps/mytownmap/src/feature/config/*`, `feature/rng/*` | `feature/ecs/components/*` (roads/buildings) | `feature/routing/*` (graph, path cache, lane policy) | `feature/ecs/components/*`, `feature/ecs/systems/*` (agents/vehicles/delivery) | `feature/ecs/systems/scheduling/*`, `feature/ecs/world/*` | — (persistence via infra only) | `feature/ecs` exposes read-only state to UI | — |
+| infrastructure (callee) | — | — | — | — | — | `src/apps/mytownmap/src/infrastructure/persistence/*` (IndexedDB, DTO) | `infrastructure/ui/*`, `ui/pixi/*`, `ui/screens/*`, `ui/hud/*` (read-only state) | `infrastructure/assets/*` |
+
+Rules of engagement
+- Routing modes (Easy/Normal/Hard) live in `feature/routing`; selection happens in `usecase`. PRNG must come from `feature/rng`.
+- Config/env/constants/featureFlags live in `feature/config`; consume injected values only.
+- Persistence only via `infrastructure/persistence` DTOs; no direct ECS component access.
+- UI renders Pixi/screens only; state changes go through usecase → ECS.
 
 ## Documentation & Contribution
 - Before updating development documentation, read the root `CONTRIBUTING.md` and follow its guidance; reference it in your PR.

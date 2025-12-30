@@ -36,6 +36,7 @@
 - プレイヤー介入は道路/建物の追加・変更・削除に限定。その他の行為はガバナンス承認が必要。
 - 可観測性は New Relic（エラーのみ）。Cloudflare Web Analytics は任意かつプライバシー配慮。設定は外部化すること。
 - UI/E2E テストは Playwright を必須とし、他フレームワーク利用はガバナンス承認が必要。
+- ゲームコード構造マトリクスを厳守: 依存は一方向 `app/usecase → feature → infrastructure`、feature間の直接呼び出しは禁止（usecase経由）。UIはECS stateを参照のみ（変更は usecase→ECS/system）。永続化は `infrastructure/persistence` のDTO経由のみ。Routingは `feature/routing` 実装＋選択は `usecase`。シードPRNGは `feature/rng`。設定/定数/feature flagsは `feature/config`。アセットは `infrastructure/assets`、Pixi/UIは `infrastructure/ui`/`ui/pixi`/`ui/screens`/`ui/hud`。
 
 ## プロジェクト構成
 
@@ -60,7 +61,28 @@ src/
 └── apps/
 	└── mytownmap/
 		├── src/
+		│   ├── app/                     # 起動/DI、エントリ、モード選択（caller）
+		│   ├── usecase/                 # 道路/建物コマンド、経路モード選択のオーケストレーション
+		│   ├── feature/                 # ドメイン/ECS/ルーティング/設定（callee）
+		│   │   ├── config/              # env/constants/featureFlags（外部入力）
+		│   │   ├── rng/                 # シード付きPRNGファクトリ
+		│   │   ├── routing/             # 道路グラフ、パスキャッシュ、レーンポリシー（Easy/Normal/Hard）
+		│   │   └── ecs/
+		│   │       ├── components/      # road/building/resident/vehicle/delivery/day-cycle 等
+		│   │       ├── systems/         # scheduling/assignment/routing/movement/delivery/persistence/observability
+		│   │       └── world/           # worldBuilder, systemRegistry, simulationLoop
+		│   └── infrastructure/          # UI/Pixi、永続化、アセット（callee）
+		│       ├── persistence/         # IndexedDB アダプタ、DTO
+		│       ├── ui/
+		│       │   ├── pixi/            # stage factory, assets manifest
+		│       │   ├── screens/         # title, save selection, config, tutorial placeholder
+		│       │   └── hud/             # ゲーム内HUD
+		│       └── assets/              # fonts, sprites, tilesets, shaders
 		└── tests/
+			├── unit/
+			├── integration/
+			└── e2e/playwright/
+				└── fixtures/            # maps, seeds
 ```
 
 **構成の決定**: ゲームは `src/apps/mytownmap` に配置し、アプリコードとテストはこの配下に置いてください。

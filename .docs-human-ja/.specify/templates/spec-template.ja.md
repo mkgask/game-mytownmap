@@ -20,6 +20,7 @@
 - プレイヤー介入は道路/建物の追加・変更・削除に限定。その他はガバナンス承認が必要。
 - 可観測性: New Relic（エラーのみ）、Cloudflare Web Analytics は任意/プライバシー配慮、設定は外部化。
 - UI/E2E テストは Playwright 必須。他フレームワークはガバナンス承認が必要。
+- ゲームコード構造マトリクスを厳守: 依存は一方向 `app/usecase → feature → infrastructure`、feature間の直接呼び出しは禁止（usecase経由）。UIはECS stateを参照のみ（変更は usecase→ECS/system）。永続化は `infrastructure/persistence` のDTO経由のみ。Routingは `feature/routing` 実装＋選択は `usecase`。シードPRNGは `feature/rng`。設定/定数/feature flagsは `feature/config`。アセットは `infrastructure/assets`、Pixi/UIは `infrastructure/ui`/`ui/pixi`/`ui/screens`/`ui/hud`。
 
 ## ユーザシナリオとテスト *(必須)*
 

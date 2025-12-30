@@ -42,6 +42,7 @@
 - Player interventions are limited to adding, modifying, or removing roads and buildings; any other player-facing actions require governance approval.
 - Observability uses New Relic for errors only; Cloudflare Web Analytics optional and privacy-conscious; all configuration is externalized.
 - UI/E2E testing MUST use Playwright; using other UI/E2E frameworks requires governance approval.
+- Game Code Structure matrix is enforced: one-way `app/usecase → feature → infrastructure`, no cross-feature calls (usecase only), UI read-only against ECS state (mutations via usecase → ECS/system), persistence only via `infrastructure/persistence` DTOs, routing in `feature/routing` with selection in `usecase`, seeded PRNG in `feature/rng`, config/env/constants in `feature/config`, assets in `infrastructure/assets`, Pixi/UI in `infrastructure/ui`/`ui/pixi`/`ui/screens`/`ui/hud`.
 
 ## Project Structure
 
@@ -65,8 +66,29 @@ specs/[###-feature]/
 src/
 └── apps/
     └── mytownmap/
-        ├── src/
-        └── tests/
+    ├── src/
+    │   ├── app/                     # boot/DI, entry, mode selection (callers)
+    │   ├── usecase/                 # orchestrates road/building commands, routing mode selection
+    │   ├── feature/                 # domain/ECS/routing/config (callees)
+    │   │   ├── config/              # env/constants/featureFlags (externalized)
+    │   │   ├── rng/                 # seeded PRNG factory
+    │   │   ├── routing/             # road graph, path cache, lane policy (Easy/Normal/Hard)
+    │   │   └── ecs/
+    │   │       ├── components/      # road/building/resident/vehicle/delivery/day-cycle/etc.
+    │   │       ├── systems/         # scheduling/assignment/routing/movement/delivery/persistence/observability
+    │   │       └── world/           # worldBuilder, systemRegistry, simulationLoop
+    │   └── infrastructure/          # UI/Pixi, persistence, assets (callees)
+    │       ├── persistence/         # IndexedDB adapters, DTOs
+    │       ├── ui/
+    │       │   ├── pixi/            # stage factory, assets manifest
+    │       │   ├── screens/         # title, save selection, config, tutorial placeholders
+    │       │   └── hud/             # in-game HUD
+    │       └── assets/              # fonts, sprites, tilesets, shaders
+    └── tests/
+      ├── unit/
+      ├── integration/
+      └── e2e/playwright/
+        └── fixtures/            # maps, seeds
 ```
 
 **Structure Decision**: The game lives at `src/apps/mytownmap`; place all app code and tests under this path.

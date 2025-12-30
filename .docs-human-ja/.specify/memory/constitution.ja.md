@@ -1,19 +1,18 @@
 <!--
 Sync Impact Report
-- Version change: 2.6.0 → 2.6.1
-- Modified principles: ガバナンス（翻訳ルールを `.docs-human-ja/` のルートパスミラー方式に統一し、`.docs-ai-agent` 言及を削除）
-- Added sections: none
+- Version change: 2.6.1 → 2.7.0
+- Modified principles: プロジェクト制約にゲームコード構造マトリクスを追加（§9）
+- Added sections: プロジェクト制約 §9 (Game Code Structure Matrix)
 - Removed sections: none
 - Templates checked/updated:
   - .specify/templates/plan-template.md ✅
+  - .specify/templates/spec-template.md ✅
   - .specify/templates/tasks-template.md ✅
   - .docs-human-ja/.specify/templates/plan-template.ja.md ✅
+  - .docs-human-ja/.specify/templates/spec-template.ja.md ✅
   - .docs-human-ja/.specify/templates/tasks-template.ja.md ✅
-  - CONTRIBUTING.md ✅
-  - .docs-human-ja/CONTRIBUTING.ja.md ✅
-  - .docs-human-ja/README.ja.md ✅
-- Runtime docs/scripts:
-  - scripts/check_docs_sync.py ✅ （リポジトリルートからのパスを `.docs-human-ja/` へミラー。`.docs-ai-agent` 依存なし）
+  - .specify/templates/commands (ディレクトリ未存在) ⚠ pending
+- Runtime docs/scripts: none
 - Follow-up TODOs:
   - TODO(BUILD_CONFIG): `src/apps/mytownmap` 用の Cloudflare Pages CI ジョブテンプレートを追加する
   - TODO(PR_TEMPLATE): 憲章準拠チェックリストとドキュメント検証項目を PR テンプレートに追加する
@@ -146,6 +145,14 @@ Sync Impact Report
 - 必須ツールチェインや許可サービスから逸脱する場合（例: 他社アナリティクスの追加、別 ECS への変更）は、リスク／コストを明記した提案を作成し、承認を得てからマージする。
 - ECS のデータ構造、スケジュール意味論、公開するセーブ／リストア形式に破壊的変更を加える場合は、移行手順と後方互換テストを含めること。
 
+9. **ゲームコード構造マトリクス（必須遵守）**
+- 依存方向は一方向 `app/usecase → feature → infrastructure`。feature 間の直接呼び出しは禁止し、必ず usecase を経由する。
+- UI は ECS state を参照のみとし、状態変更は usecase → ECS/system の流れに限定する。Routing 実装は `feature/routing` に置き、モード選択は `usecase` で行う。シード付き PRNG は `feature/rng` に集約する。
+- 永続化は `infrastructure/persistence` に置き、DTO 経由のみで行う。インフラ層から ECS コンポーネントを直接読む/書くことを禁じる。
+- 設定/定数/feature flags は `feature/config` に集約し、外部注入値を消費する。
+- アセットロードは `infrastructure/assets`、Pixi/UI は `infrastructure/ui`/`ui/pixi`/`ui/screens`/`ui/hud` に配置し、ECS の UI への公開は参照専用とする。
+- ゲーム要素×プログラムレイヤの正規マッピングはルート README の「Game Code Structure」テーブルで管理し、コードと仕様と整合させること。
+
 ## ガバナンス
 
 - ドキュメント更新: 開発ドキュメントを更新する際は、必ずリポジトリルートの `CONTRIBUTING.md` を参照し、その指示に従ってください。PRの説明に参照を記載してください。
@@ -154,4 +161,4 @@ Sync Impact Report
 - すべてのPRとコードレビューでは関連する範囲で本憲章への準拠を検証すること。複雑性はPR説明で正当化すること
 - 準拠しない実装や逸脱はPRに理由と将来の整合化のための明示的なTODOを記載すること
 
-**Version**: 2.6.1 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30
+**Version**: 2.7.0 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30
