@@ -1,38 +1,71 @@
 #!/usr/bin/env python3
-"""Simple checker for docs parity and length.
+"""Docs parity/length checker.
 
 Usage: python3 scripts/check_docs_sync.py
 
-Checks:
-- Every `.docs-ai-agent/**/*.md` has a corresponding `.docs-human-ja/<same path>.ja.md`.
-- English files longer than 300 lines are errors.
-- English files longer than 250 lines are warnings.
+Rules:
+- English Markdown files live anywhere in the repo (except excluded dirs) and are the source of truth.
+- Japanese translations MUST live under `.docs-human-ja/` mirroring the path from the repo root and use `.ja.md` suffix.
+    Example: `docs/guides/foo.md` → `.docs-human-ja/docs/guides/foo.ja.md`.
+- English files >300 lines are errors; >250 lines are warnings.
 
-Exit code: 0 if OK (only warnings), 1 if any errors found.
+Exit code: 0 if OK (only warnings), 1 if any errors.
 """
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EN_DIR = ROOT / ".docs-ai-agent"
 JA_DIR = ROOT / ".docs-human-ja"
+
+# Directories to skip when searching for English Markdown files
+EXCLUDE_DIRS = {
+    ".git",
+    ".docs-human-ja",
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    ".turbo",
+    ".next",
+    ".vscode",
+    ".idea",
+    "tmp",
+    "temp",
+    "storybook-static",
+    "src",
+    "scripts",
+    "specs",
+    ".specify",
+}
 
 errors = []
 warnings = []
 
-if not EN_DIR.exists():
-    errors.append(f"Missing directory: {EN_DIR}")
+if not JA_DIR.exists():
+    errors.append(f"Missing directory: {JA_DIR}")
 
-for en_path in EN_DIR.rglob("*.md"):
-    rel = en_path.relative_to(EN_DIR)
-    ja_path = JA_DIR / rel.parent / (en_path.stem + ".ja.md")
 
-    # Check existence
+def _should_skip(rel_path: Path) -> bool:
+    return any(part in EXCLUDE_DIRS for part in rel_path.parts)
+
+
+for en_path in ROOT.rglob("*.md"):
+    rel = en_path.relative_to(ROOT)
+
+    if rel.parts and rel.parts[0] == ".docs-human-ja":
+        continue
+    if en_path.name.endswith(".ja.md"):
+        continue
+    if _should_skip(rel):
+        continue
+
+    ja_rel = rel.with_suffix(".ja.md")
+    ja_path = JA_DIR / ja_rel
+
     if not ja_path.exists():
         errors.append(f"Missing translation: {ja_path} for {en_path}")
 
-    # Check length
     with en_path.open("r", encoding="utf-8") as f:
         lines = f.readlines()
     n = len(lines)

@@ -1,7 +1,7 @@
 # Implementation Plan: [FEATURE]
 
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `.docs-ai-agent/spaces/[###-feature-name]/spec.md`
+**Input**: Feature specification from `specs/[###-feature-name]/spec.md`
 
 **Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow. Before updating development documentation, consult the repository-root `CONTRIBUTING.md` and follow its guidance; reference it in your PR.
 
@@ -49,13 +49,14 @@ ios/ or android/
 ### Documentation (this feature)
 
 ```text
-.docs-ai-agent/spaces/[###-feature]/
-├── plan.md              # This file (/speckit.plan command output)
-├── research.md          # Phase 0 output (/speckit.plan command)
-├── data-model.md        # Phase 1 output (/speckit.plan command)
-├── quickstart.md        # Phase 1 output (/speckit.plan command)
-├── contracts/           # Phase 1 output (/speckit.plan command)
-└── tasks.md             # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan)
+specs/[###-feature]/
+├── spec.md          # Feature spec (/speckit.spec output)
+├── plan.md          # This file (/speckit.plan output)
+├── research.md      # Phase 0 output (/speckit.plan output)
+├── data-model.md    # Phase 1 output (/speckit.plan output)
+├── quickstart.md    # Phase 1 output (/speckit.plan output)
+├── contracts/       # Phase 1 output (/speckit.plan output)
+└── tasks.md         # Phase 2 output (/speckit.tasks output)
 ```
 
 ### Source Code (monorepo root)

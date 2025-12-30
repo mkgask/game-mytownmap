@@ -1,7 +1,7 @@
 # 実装計画: [FEATURE]
 
 **ブランチ**: `[###-feature-name]` | **日付**: [DATE] | **仕様**: [link]
-**入力**: `.docs-ai-agent/spaces/[###-feature-name]/spec.md` のフィーチャー仕様
+**入力**: `specs/[###-feature-name]/spec.md` のフィーチャー仕様
 
 **注記**: このテンプレートは `/speckit.plan` コマンドで生成されます。実行手順は `.specify/templates/commands/plan.md` を参照してください。開発ドキュメントを更新する際は、必ずリポジトリルートの `CONTRIBUTING.md` を確認し、その指示に従い、PRで参照を明記してください。
 
@@ -43,13 +43,14 @@ ios/ or android/
 ### ドキュメント (本フィーチャー)
 
 ```text
-.docs-ai-agent/spaces/[###-feature]/
-├── plan.md              # このファイル (/speckit.plan 出力)
-├── research.md          # フェーズ0 (/speckit.plan 出力)
-├── data-model.md        # フェーズ1 (/speckit.plan 出力)
-├── quickstart.md        # フェーズ1 (/speckit.plan 出力)
-├── contracts/           # フェーズ1 (/speckit.plan 出力)
-└── tasks.md             # フェーズ2 (/speckit.tasks 出力 - /speckit.plan では作られない)
+specs/[###-feature]/
+├── spec.md          # フィーチャー仕様 (/speckit.spec 出力)
+├── plan.md          # このファイル (/speckit.plan 出力)
+├── research.md      # フェーズ0 (/speckit.plan 出力)
+├── data-model.md    # フェーズ1 (/speckit.plan 出力)
+├── quickstart.md    # フェーズ1 (/speckit.plan 出力)
+├── contracts/       # フェーズ1 (/speckit.plan 出力)
+└── tasks.md         # フェーズ2 (/speckit.tasks 出力)
 ```
 
 ### ソースコード (モノレポルート)

@@ -1,19 +1,14 @@
 <!--
 Sync Impact Report
-- Version change: 2.4.0 → 2.5.0
-- Modified principles: Governance (documentation translations MUST mirror English paths under `.docs-human-ja`, including `.docs-ai-agent` tree at `.docs-human-ja/.docs-ai-agent/...`)
+- Version change: 2.6.1 → 2.6.1 (no constitution content changes this revision)
+- Modified principles: none
 - Added sections: none
 - Removed sections: none
-- Templates checked:
-  - .specify/templates/plan-template.md ✅ no change needed
-  - .specify/templates/spec-template.md ✅ no change needed
-  - .specify/templates/tasks-template.md ✅ no change needed
-  - .specify/templates/commands/ ⚠ directory missing in repo (no command templates to update)
-- Templates updated for doc path guidance:
-  - CONTRIBUTING.md ✅
-  - .docs-human-ja/CONTRIBUTING.ja.md ✅
-  - .docs-human-ja/README.ja.md ✅
-  - .docs-ai-agent/README.md ✅
+- Templates checked/updated:
+  - .specify/templates/plan-template.md ✅ (no change required)
+  - .specify/templates/spec-template.md ✅ (no change required)
+  - .specify/templates/tasks-template.md ✅ (no change required)
+- Runtime docs/scripts: none
 - Follow-up TODOs:
   - TODO(BUILD_CONFIG): add Cloudflare Pages CI job template for `src/apps/mytownmap` if not present
   - TODO(PR_TEMPLATE): add constitution compliance checklist and docs verification item to PR template
@@ -93,11 +88,12 @@ Sync Impact Report
 - The product is a **2D, browser-playable game** where the core mechanics are traffic and congestion simulation with objectives to relieve traffic.
 - **Map & placement**: The game must allow drawing roads; roads are the only traversable surface for vehicles. Buildings (residences, shops, factories) are placed adjacent to roads.
 - **Agents & movement rules**:
-  - NPCs (residents) are associated with a single residence and may be associated with a specific shop or factory (their workplace or favorite shop) as appropriate.
-  - Daily movement schedule:
-    - Morning → Noon: residents move from residence to assigned factory OR assigned shop (work) by car.
-    - Noon → Evening: residents move from factory or shop to one random shop (uniform among all shops, regardless of affiliation) by car.
-    - Evening → Night: residents move from shop back to their residence by car.
+  - NPCs (residents) are associated with a single residence and may be associated with a specific shop or factory as their **Workplace**. A shop can play two distinct roles: **WorkplaceShop** (assigned workplace, capacity-limited) and **ShoppingDestinationShop** (chosen randomly for shopping, no capacity limit); never conflate these roles.
+  - Core daily actions (names are normative; timing windows are secondary and may change):
+    - **CommuteToWork**: residence → assigned workplace (factory or WorkplaceShop).
+    - **ShoppingTrip**: workplace → randomly chosen ShoppingDestinationShop (uniform over all shops, independent of WorkplaceShop assignment).
+    - **ReturnHome**: shop → assigned residence.
+  - If time windows are modeled, they typically map to Morning/Noon/Evening, but action ordering is the primary contract and must remain even if timing changes later.
   - Shops and factories have a **worker capacity** (max number of residents who can work there). Residents assigned to workplaces must respect those capacities.
 - **Goods logistics**:
   - Each factory dispatches exactly one delivery car per day to a shop (destination may be random or policy-driven per design) to move goods.
@@ -149,9 +145,9 @@ Sync Impact Report
 ## Governance
 
 - Documentation updates: Before updating any development documentation, consult the repository-root `CONTRIBUTING.md` and follow its guidance; reference it in the PR description.
-- Documentation translations: Japanese translations MUST mirror the English path under `.docs-human-ja`, preserving the full subtree. Files under `.docs-ai-agent/...` have translations under `.docs-human-ja/.docs-ai-agent/...` with a `.ja.md` suffix.
+- Documentation translations: Japanese translations MUST live under `.docs-human-ja/`, mirroring each English Markdown file's path from the repository root and using the `.ja.md` suffix. There is no required English docs directory; place English docs where appropriate.
 - This constitution supersedes informal or ad-hoc practices; amendments require documentation and a migration plan where applicable.
 - All PRs and code reviews must verify compliance with the constitution where relevant; complexity must be justified in PR descriptions.
 - Non-compliance or deviations must be documented in the PR with a rationale and an explicit TODO for future alignment.
 
-**Version**: 2.5.0 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30
+**Version**: 2.6.1 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30

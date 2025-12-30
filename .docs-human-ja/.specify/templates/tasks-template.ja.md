@@ -5,7 +5,7 @@ description: "フィーチャー実装用タスクリストテンプレート"
 
 # Tasks: [FEATURE NAME]
 
-**入力**: `.docs-ai-agent/spaces/[###-feature-name]/` の設計ドキュメント
+**入力**: `specs/[###-feature-name]/` の設計ドキュメント
 **前提**: plan.md（必須）、spec.md（ユーザーストーリー必須）、research.md、data-model.md、contracts/
 
 **テスト**: 以下の例はテストタスクを含みます。テストが明示的に要求された場合のみ含めてください。

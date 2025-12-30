@@ -32,6 +32,20 @@ MyTownMap is a browser-based 2D traffic-congestion simulation game built as a si
 - `.docs-human-ja/` — human-readable Japanese documentation
 - `scripts/` — helper scripts (documentation checks)
 
+## Game Code Structure (src/apps/mytownmap)
+- `bootstrap/` — app entry wiring, configuration loading, seed/init state
+- `routing/` — screen/scene routing (title, config, game)
+- `foundation/` — render loop + simulation tick orchestration and shared runtime wiring
+- `usecase/` — application flows coordinating feature modules
+- `feature/` — per-feature logic using primitives/infrastructure
+- `primitives/` — shared entities and value objects reused by features
+- `utilities/` — shared helpers/utilities reused across modules
+- `infrastructure/` — view, input, IndexedDB adapters (shared)
+
+Screens: title, config, game. Title/config can run as plain web screens, but to keep things consistent without extra frameworks, you may also run them inside the game loop if that keeps the code simpler.
+
+Dependencies flow top-to-bottom by default; dependency inversion is allowed where appropriate (e.g., ports/adapters).
+
 ## Documentation & Contribution
 - Before updating development documentation, read the root `CONTRIBUTING.md` and follow its guidance; reference it in your PR.
 - Japanese documentation lives under `.docs-human-ja/`; the Japanese counterpart of this file is `README.ja.md` at the repository root.

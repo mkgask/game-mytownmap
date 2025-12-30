@@ -1,9 +1,10 @@
 # 例: API設計メモ
 
-これは `.docs-ai-agent` にドキュメントを作成し、`.docs-human-ja/.docs-ai-agent` に翻訳を配置する際のパスミラーリングの例です。
+これは英語ファイルのリポジトリルートからのパスを `.docs-human-ja/` 配下で模倣し、`.ja.md` 拡張子で翻訳を配置する例です。
 
-- 目的: パスの模倣と翻訳ファイル命名の例を示す。
-- 場所: `.docs-human-ja/.docs-ai-agent/example/api.ja.md`
+- 目的: パスミラーリングと翻訳ファイル命名の例を示す。
+- 英語例: `example/api.md`
+- 日本語訳の場所: `.docs-human-ja/example/api.ja.md`
 
 ## 内容
 
