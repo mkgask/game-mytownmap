@@ -73,6 +73,8 @@ Game engineer estimates effort and sequencing using the baseline requirements an
 - Vehicle path attempts to traverse non-road tiles or collide with another vehicle.
 - Seed mismatch between runs producing diverging simulations.
 - Import/export tie when multiple edge roads exist and demand/supply crosses over.
+- Road placement overlapping an existing building triggers demolition and deterministic reassignment/cleanup before the road is finalized.
+- Vehicles with different origins/destinations require distinct optimal routes; routing difficulty modes must evaluate per-vehicle context to avoid shared-path assumptions.
 
 ## Requirements *(mandatory)*
 
@@ -96,6 +98,8 @@ Game engineer estimates effort and sequencing using the baseline requirements an
 - **FR-009**: System MUST externalize configuration (seeds, analytics toggles, New Relic keys, feature flags) and avoid hardcoded secrets or URLs.
 - **FR-010**: System MUST expose observable error events suitable for New Relic ingestion while excluding PII and full request payloads.
 - **FR-011**: System MUST provide acceptance-testable flows for road building, building placement, and a full day-cycle run that QA can automate in Playwright.
+- **FR-012**: When a player places a road whose footprint overlaps any portion of an existing building, the building MUST be demolished at placement confirmation with deterministic cleanup (unassign residents/workers and free capacity) before the road is finalized.
+- **FR-013**: System MUST support seeded, deterministic routing difficulty modes for all vehicles: Easy (early optimal path choice with proactive lane positioning and congestion avoidance), Normal (mixed heuristic: ~50% Easy behavior and ~50% Hard behavior, selected via seeded PRNG), Hard (greedy destination-ward movement, defers lane choice until near arrival and enters congestion without avoidance). Mode selection and per-vehicle routing must respect each vehicle’s distinct origin/destination and remain reproducible under the simulation seed.
 
 ### Non-Functional Requirements
 

@@ -26,6 +26,7 @@ description: "Task list template for feature implementation"
 
 ## Path Conventions
 
+- **MyTownMap app**: `src/apps/mytownmap/src/app|usecase` (callers), `src/apps/mytownmap/src/feature` (domain/ECS/routing/config), `src/apps/mytownmap/src/infrastructure` (UI/Pixi, persistence, assets). Dependency is one-way `app/usecase → feature → infrastructure`; UI reads ECS state only; persistence uses DTOs in `infrastructure/persistence`; routing lives in `feature/routing` with selection in `usecase`; seeded PRNG in `feature/rng`; config/env/constants in `feature/config`.
 - **Single project**: `src/`, `tests/` at repository root
 - **Web app**: `backend/src/`, `frontend/src/`
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`

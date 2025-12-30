@@ -1,13 +1,14 @@
 <!--
 Sync Impact Report
-- Version change: 2.6.1 → 2.6.1 (no constitution content changes this revision)
-- Modified principles: none
-- Added sections: none
+- Version change: 2.6.1 → 2.7.0
+- Modified principles: added Game Code Structure matrix rules (Project Constraints §9)
+- Added sections: Project Constraints §9 (Game Code Structure Matrix)
 - Removed sections: none
 - Templates checked/updated:
-  - .specify/templates/plan-template.md ✅ (no change required)
-  - .specify/templates/spec-template.md ✅ (no change required)
-  - .specify/templates/tasks-template.md ✅ (no change required)
+  - .specify/templates/plan-template.md ✅ (updated Constitution Check to include matrix rules)
+  - .specify/templates/spec-template.md ✅ (updated Constitution Alignment checklist to include matrix rules)
+  - .specify/templates/tasks-template.md ✅ (path conventions note for matrix layering)
+  - .specify/templates/commands (directory not present) ⚠ pending (no files to update)
 - Runtime docs/scripts: none
 - Follow-up TODOs:
   - TODO(BUILD_CONFIG): add Cloudflare Pages CI job template for `src/apps/mytownmap` if not present
@@ -142,6 +143,14 @@ Sync Impact Report
 - Any deviation from the required toolchain or permitted services (e.g., adding third-party analytics, changing ECS runtime) MUST be documented in a proposal, justify the added risk/cost, and be approved by governance before merging.
 - Breaking changes to core ECS data shapes, schedule semantics, or public save/restore formats MUST include migration guidance and compatibility testing.
 
+9. **Game Code Structure Matrix (non-negotiable)**
+- Dependency direction is one-way: `app/usecase → feature → infrastructure`. Cross-feature calls are forbidden; coordinate via `usecase`.
+- UI is read-only against ECS state; state mutations flow `usecase → ECS/system`. Routing mode selection happens in `usecase`; routing implementations live in `feature/routing`; seeded PRNG lives in `feature/rng`.
+- Persistence lives in `infrastructure/persistence` and MUST use DTOs; no direct reads/writes of ECS components from infrastructure.
+- Config/env/constants/feature flags live in `feature/config` and consume injected values only.
+- Asset loading lives in `infrastructure/assets`; Pixi/UI code in `infrastructure/ui`/`ui/pixi`/`ui/screens`/`ui/hud`; ECS data exposure to UI is read-only.
+- Canonical mapping of game element × program layer is maintained in the root README "Game Code Structure" table and must be kept in sync with code and specs.
+
 ## Governance
 
 - Documentation updates: Before updating any development documentation, consult the repository-root `CONTRIBUTING.md` and follow its guidance; reference it in the PR description.
@@ -150,4 +159,4 @@ Sync Impact Report
 - All PRs and code reviews must verify compliance with the constitution where relevant; complexity must be justified in PR descriptions.
 - Non-compliance or deviations must be documented in the PR with a rationale and an explicit TODO for future alignment.
 
-**Version**: 2.6.1 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30
+**Version**: 2.7.0 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-30

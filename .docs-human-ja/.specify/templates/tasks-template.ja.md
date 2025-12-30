@@ -26,6 +26,7 @@ description: "フィーチャー実装用タスクリストテンプレート"
 
 ## パス規約
 
+- **MyTownMap アプリ**: `src/apps/mytownmap/src/app|usecase`（caller）、`src/apps/mytownmap/src/feature`（ドメイン/ECS/ルーティング/設定）、`src/apps/mytownmap/src/infrastructure`（UI/Pixi、永続化、アセット）。依存は一方向 `app/usecase → feature → infrastructure`。UIはECS stateを参照のみ。永続化は `infrastructure/persistence` のDTO経由。Routingは `feature/routing` 実装＋選択は `usecase`。シードPRNGは `feature/rng`。設定/定数/feature flagsは `feature/config`。
 - **シングルプロジェクト**: `src/`, `tests/` をリポジトリルートに配置
 - **Webアプリ**: `backend/src/`, `frontend/src/`
 - **モバイル**: `api/src/`, `ios/src/` または `android/src/`
