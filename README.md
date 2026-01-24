@@ -88,9 +88,9 @@ bun test
 
 ## ライセンス
 
-```text
-NYSL Version 0.9982
+[NYSL Version 0.9982](https://www.kmonos.net/nysl/)
 
+```text
 A. 本ソフトウェアは Everyone'sWare です。このソフトを手にした一人一人が、ご自分の作ったものを扱うのと同じように、自由に利用することが出来ます。
 
   A-1. フリーウェアです。作者からは使用料等を要求しません。
