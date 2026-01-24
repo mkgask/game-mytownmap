@@ -22,8 +22,8 @@ Use this checklist for initial project setup tasks to establish a solid foundati
 
 Focus on MVP and iterative development with Test-First in mind. Ensure security, performance, and scalability are integrated early.
 
-1. [ ] Test Environment Setup (CI/CD Pipeline, test frameworks like Jest or Selenium)
-2. [ ] MVP: Empty output build, deploy, and run (proof of existence) – Include basic test scaffolding and initial screen setup (with UI tests)
+1. [ ] MVP: Empty output build, deploy, and run (proof of existence) – Include basic empty test implementation for proof of existence
+2. [ ] Test Environment Setup (CI/CD Pipeline, test frameworks like Jest or Selenium)
 3. [ ] Unit Testing Initial Implementation (Test-First: Write tests before code)
 4. [ ] Integration Testing Initial Implementation
 5. [ ] E2E Testing Initial Implementation

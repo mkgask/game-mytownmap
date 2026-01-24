@@ -13,7 +13,7 @@ This file serves as the central index for all development documentation in the T
 - [Overview Tasks](.upstream/overview-tasks.md) - Task checklists for initialization, specification development, context implementation, and maintenance.
 
 ## Agent Instructions
-- [AutoKit Upstream Agent](.github/agents/autokit.upstream.agent.md) - Instructions for the upstream management agent.
+- [SetupKit Upstream Agent](.github/agents/setup.upstream.agent.md) - Instructions for the upstream management agent.
 
 ## Templates
 - [Upstream Spec Template](.specify/templates/upstream-spec-template.md)
