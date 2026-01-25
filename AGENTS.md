@@ -20,6 +20,9 @@ This file serves as the central index for all development documentation in the T
 - [Upstream Plan Template](.specify/templates/upstream-plan-template.md)
 - [Upstream Tasks Template](.specify/templates/upstream-tasks-template.md)
 
+## Specifications
+- [Empty page MVP Spec](specs/001-mvp-empty-page/spec.md) - Specification for the initial MVP landing page feature.
+
 ## Research and Other Documents
 - (Add links to research documents as they are created)
 

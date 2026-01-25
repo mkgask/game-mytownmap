@@ -7,6 +7,7 @@
 ## 技術スタック (MVP最小限)
 
 - **Bun**: ビルド、パッケージ管理、ユニットテスト用
+- **Biome**: linter / formatter
 - **Astro**: ベースフレームワーク
 - **Cloudflare Wrangler**: Cloudflare Pagesへのデプロイ用
 
@@ -19,20 +20,26 @@
 
 1. Bunをインストール (https://bun.sh/docs/installation)
 
-2. Astroプロジェクトを作成:
+2. Astroを追加:
    ```bash
-   bun create astro@latest game-mytownmap
-   cd game-mytownmap
+   bun add astro
    ```
 
-3. 依存関係をインストール:
-   ```bash
-   bun install
+3. Astro設定ファイルを作成 (例: astro.config.mjs):
+   ```javascript
+   import { defineConfig } from 'astro/config';
+
+   export default defineConfig({});
    ```
 
 4. Cloudflare Wranglerをインストール:
    ```bash
    bun add -D wrangler
+   ```
+
+5. Biomeをインストール:
+   ```bash
+   bun add -D @biomejs/biome
    ```
 
 ## 開発
@@ -84,6 +91,16 @@ wrangler pages deploy dist
 ユニットテストを実行:
 ```bash
 bun test
+```
+
+コード品質チェックを実行:
+```bash
+bunx @biomejs/biome check .
+```
+
+コードをフォーマット:
+```bash
+bunx @biomejs/biome format --write .
 ```
 
 ## ライセンス

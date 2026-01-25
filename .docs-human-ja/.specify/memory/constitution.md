@@ -71,6 +71,7 @@
 - PixiJS（2D レンダリング）
 - bitECS（ECS ランタイム）
 - bun（ビルド／パッケージ／ユニットテスト）
+- Biome（linter / formatter）
 - Cloudflare Pages（ホスティング）
 - Astro（ベースフレームワーク）
 - New Relic（エラー収集のみ）

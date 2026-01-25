@@ -71,6 +71,7 @@
 - PixiJS (2D rendering)
 - bitECS (ECS runtime)
 - bun (build / package manager / unit tests)
+- Biome (linter / formatter)
 - Cloudflare Pages (hosting)
 - Astro (base framework)
 - New Relic (errors only)

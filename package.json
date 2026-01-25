@@ -1,0 +1,30 @@
+{
+  "name": "game-mytownmap",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "test": "bun test",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "typecheck": "astro check",
+    "deploy:cf": "wrangler pages deploy dist",
+
+    "preview": "bun run build && astro preview",
+    "check": "bun run format && bun run lint && bun run typecheck && bun run test",
+    "deploy": "bun run check && bun run deploy:cf"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.12",
+    "@types/bun": "latest",
+    "wrangler": "^4.60.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "astro": "^5.16.15"
+  }
+}
