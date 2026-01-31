@@ -10,4 +10,10 @@ cache/
 logs/
 *.log
 
+# Test artifacts
+playwright-report/
+test-results/
+coverage/
+*.lcov
+
 

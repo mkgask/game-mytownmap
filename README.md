@@ -100,20 +100,57 @@ bun run deploy:cf
 
 ## テスト
 
-ユニットテストを実行:
+このプロジェクトでは、以下のテストインフラを整備しています：
+
+### テストの種類
+
+- **ユニットテスト**: 個別の関数やコンポーネントのテスト (`tests/unit/`)
+- **統合テスト**: コンポーネント間の連携テスト (`tests/integration/`)
+- **E2Eテスト**: エンドツーエンドのユーザーシナリオテスト (`tests/e2e/`)
+
+### テスト実行
+
+全テスト実行:
 ```bash
-bun test
+bun run test:all
 ```
 
-コード品質チェックを実行:
+ユニットテストのみ:
 ```bash
-bunx @biomejs/biome check .
+bun run test:unit
 ```
 
-コードをフォーマット:
+統合テストのみ:
 ```bash
-bunx @biomejs/biome format --write .
+bun run test:integration
 ```
+
+E2Eテストのみ:
+```bash
+bun run test:e2e
+```
+
+### テストの追加
+
+- ユニットテスト: `tests/unit/` に `.test.ts` ファイルを追加
+- 統合テスト: `tests/integration/` に `.test.ts` ファイルを追加
+- E2Eテスト: `tests/e2e/` に `.spec.ts` ファイルを追加
+
+### テスト設定
+
+- テストフレームワーク: Bun test (Jest互換)
+- E2Eテスト: Playwright
+- 環境: jsdom (ブラウザ環境シミュレーション)
+- セットアップ: `tests/setup.ts`
+
+### カバレッジレポート
+
+テストカバレッジを生成:
+```bash
+bun test --coverage
+```
+
+レポートは `coverage/` ディレクトリに生成されます。
 
 ## ライセンス
 

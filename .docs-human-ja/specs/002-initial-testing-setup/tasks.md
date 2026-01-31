@@ -36,9 +36,9 @@
 
 ユーザーストーリーの前に完了する必要がある前提条件。
 
-- [ ] T004 package.jsonでユニットおよび統合テスト用にbun testを設定
-- [ ] T005 playwright.config.tsでE2Eテスト用にPlaywrightを設定
-- [ ] T006 tests/utils/に基本的なテストランナーユーティリティを作成
+- [X] T004 package.jsonでユニットおよび統合テスト用にbun testを設定
+- [X] T005 playwright.config.tsでE2Eテスト用にPlaywrightを設定
+- [X] T006 tests/utils/に基本的なテストランナーユーティリティを作成
 
 ## フェーズ3: ユーザーストーリー1 - ユニットテスト基盤セットアップ（優先度: P1）
 
@@ -47,13 +47,13 @@
 **独立テスト基準**: フレームワークがインストールされ、空のユニットテストが正常に実行され、テストコマンドが利用可能。
 
 **テスト**:
-- [ ] T007 [US1] tests/unit/example.test.tsに空のユニットテストファイルを作成
-- [ ] T008 [US1] bun testコマンドで空のユニットテストがパスすることを確認
+- [X] T007 [US1] tests/unit/example.test.tsに空のユニットテストファイルを作成
+- [X] T008 [US1] bun testコマンドで空のユニットテストがパスすることを確認
 
 **実装タスク**:
-- [ ] T009 [P] [US1] package.jsonでユニットテスト設定をセットアップ
-- [ ] T010 [P] [US1] tests/unit/にユニットテストディレクトリ構造を作成
-- [ ] T011 [US1] package.jsonにユニットテストスクリプトを追加
+- [X] T009 [P] [US1] package.jsonでユニットテスト設定をセットアップ
+- [X] T010 [P] [US1] tests/unit/にユニットテストディレクトリ構造を作成
+- [X] T011 [US1] package.jsonにユニットテストスクリプトを追加
 
 ## フェーズ4: ユーザーストーリー4 - エラーバウンダリ基盤セットアップ（優先度: P2）
 
@@ -62,13 +62,13 @@
 **独立テスト基準**: エラーバウンダリがクラッシュせずにエラーをキャッチし、フォールバックUIを表示する。
 
 **テスト**:
-- [ ] T012 [US4] tests/unit/ErrorBoundary.test.tsに空のエラーバウンダリテストを作成
-- [ ] T013 [US4] エラーバウンダリテストがパスすることを確認
+- [X] T012 [US4] tests/unit/ErrorBoundary.test.tsに空のエラーバウンダリテストを作成
+- [X] T013 [US4] エラーバウンダリテストがパスすることを確認
 
 **実装タスク**:
-- [ ] T014 [P] [US4] src/components/ErrorBoundary.tsxにErrorBoundaryコンポーネントを作成
-- [ ] T015 [P] [US4] ErrorBoundary.tsxに基本的なエラーキャッチロジックを実装
-- [ ] T016 [US4] ErrorBoundary.tsxにフォールバックUIレンダリングを追加
+- [X] T014 [P] [US4] src/components/ErrorBoundary.tsxにErrorBoundaryコンポーネントを作成
+- [X] T015 [P] [US4] ErrorBoundary.tsxに基本的なエラーキャッチロジックを実装
+- [X] T016 [US4] ErrorBoundary.tsxにフォールバックUIレンダリングを追加
 
 ## フェーズ5: ユーザーストーリー2 - 統合テスト基盤セットアップ（優先度: P2）
 
@@ -77,13 +77,13 @@
 **独立テスト基準**: フレームワークが設定され、空の統合テストが正常に実行される。
 
 **テスト**:
-- [ ] T017 [US2] tests/integration/example.test.tsに空の統合テストファイルを作成
-- [ ] T018 [US2] 空の統合テストがパスすることを確認
+- [X] T017 [US2] tests/integration/example.test.tsに空の統合テストファイルを作成
+- [X] T018 [US2] 空の統合テストがパスすることを確認
 
 **実装タスク**:
-- [ ] T019 [P] [US2] package.jsonで統合テストセットアップを設定
-- [ ] T020 [P] [US2] tests/integration/に統合テストディレクトリ構造を作成
-- [ ] T021 [US2] package.jsonに統合テストスクリプトを追加
+- [X] T019 [P] [US2] package.jsonで統合テストセットアップを設定
+- [X] T020 [P] [US2] tests/integration/に統合テストディレクトリ構造を作成
+- [X] T021 [US2] package.jsonに統合テストスクリプトを追加
 
 ## フェーズ6: ユーザーストーリー3 - E2Eテスト基盤セットアップ（優先度: P3）
 
@@ -92,19 +92,19 @@
 **独立テスト基準**: フレームワークがセットアップされ、空のE2Eテストがローカルdev環境に対して実行される。
 
 **テスト**:
-- [ ] T022 [US3] tests/e2e/example.spec.tsに空のE2Eテストファイルを作成
-- [ ] T023 [US3] ローカルdevに対して空のE2Eテストがパスすることを確認
+- [X] T022 [US3] tests/e2e/example.spec.tsに空のE2Eテストファイルを作成
+- [X] T023 [US3] ローカルdevに対して空のE2Eテストがパスすることを確認
 
 **実装タスク**:
-- [ ] T024 [P] [US3] playwright.config.tsでE2Eテスト設定をセットアップ
-- [ ] T025 [P] [US3] tests/e2e/にE2Eテストディレクトリ構造を作成
-- [ ] T026 [US3] package.jsonにE2Eテストスクリプトを追加
+- [X] T024 [P] [US3] playwright.config.tsでE2Eテスト設定をセットアップ
+- [X] T025 [P] [US3] tests/e2e/にE2Eテストディレクトリ構造を作成
+- [X] T026 [US3] package.jsonにE2Eテストスクリプトを追加
 
 ## 最終フェーズ: 仕上げ & 横断的関心事
 
 最終調整と横断的関心事。
 
-- [ ] T027 README.mdにテスト手順を更新
-- [ ] T028 テストカバレッジレポート設定を追加
-- [ ] T029 テストアーティファクト用の.gitignoreエントリを作成</content>
+- [X] T027 README.mdにテスト手順を更新
+- [X] T028 テストカバレッジレポート設定を追加
+- [X] T029 テストアーティファクト用の.gitignoreエントリを作成</content>
 <parameter name="filePath">/mnt/g/projects/web/game-mytownmap/.docs-human-ja/specs/002-initial-testing-setup/tasks.md

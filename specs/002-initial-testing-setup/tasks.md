@@ -36,9 +36,9 @@ Project initialization tasks to establish testing foundation.
 
 Prerequisites that must complete before user stories.
 
-- [ ] T004 Configure bun test for unit and integration testing in package.json
-- [ ] T005 Configure Playwright for E2E testing with playwright.config.ts
-- [ ] T006 Create basic test runner utilities in tests/utils/
+- [X] T004 Configure bun test for unit and integration testing in package.json
+- [X] T005 Configure Playwright for E2E testing with playwright.config.ts
+- [X] T006 Create basic test runner utilities in tests/utils/
 
 ## Phase 3: User Story 1 - Unit Testing Infrastructure Setup (Priority: P1)
 
@@ -47,13 +47,13 @@ Prerequisites that must complete before user stories.
 **Independent Test Criteria**: Framework installed, empty unit test runs successfully, test command available.
 
 **Tests**:
-- [ ] T007 [US1] Create empty unit test file in tests/unit/example.test.ts
-- [ ] T008 [US1] Verify empty unit test passes with bun test command
+- [X] T007 [US1] Create empty unit test file in tests/unit/example.test.ts
+- [X] T008 [US1] Verify empty unit test passes with bun test command
 
 **Implementation Tasks**:
-- [ ] T009 [P] [US1] Set up unit test configuration in package.json
-- [ ] T010 [P] [US1] Create unit test directory structure in tests/unit/
-- [ ] T011 [US1] Add unit test script to package.json
+- [X] T009 [P] [US1] Set up unit test configuration in package.json
+- [X] T010 [P] [US1] Create unit test directory structure in tests/unit/
+- [X] T011 [US1] Add unit test script to package.json
 
 ## Phase 4: User Story 4 - Error Boundary Infrastructure Setup (Priority: P2)
 
@@ -62,13 +62,13 @@ Prerequisites that must complete before user stories.
 **Independent Test Criteria**: Error boundary catches errors without crashing, displays fallback UI.
 
 **Tests**:
-- [ ] T012 [US4] Create empty error boundary test in tests/unit/ErrorBoundary.test.ts
-- [ ] T013 [US4] Verify error boundary test passes
+- [X] T012 [US4] Create empty error boundary test in tests/unit/ErrorBoundary.test.ts
+- [X] T013 [US4] Verify error boundary test passes
 
 **Implementation Tasks**:
-- [ ] T014 [P] [US4] Create ErrorBoundary component in src/components/ErrorBoundary.tsx
-- [ ] T015 [P] [US4] Implement basic error catching logic in ErrorBoundary.tsx
-- [ ] T016 [US4] Add fallback UI rendering in ErrorBoundary.tsx
+- [X] T014 [P] [US4] Create ErrorBoundary component in src/components/ErrorBoundary.tsx
+- [X] T015 [P] [US4] Implement basic error catching logic in ErrorBoundary.tsx
+- [X] T016 [US4] Add fallback UI rendering in ErrorBoundary.tsx
 
 ## Phase 5: User Story 2 - Integration Testing Infrastructure Setup (Priority: P2)
 
@@ -77,13 +77,13 @@ Prerequisites that must complete before user stories.
 **Independent Test Criteria**: Framework configured, empty integration test runs successfully.
 
 **Tests**:
-- [ ] T017 [US2] Create empty integration test file in tests/integration/example.test.ts
-- [ ] T018 [US2] Verify empty integration test passes
+- [X] T017 [US2] Create empty integration test file in tests/integration/example.test.ts
+- [X] T018 [US2] Verify empty integration test passes
 
 **Implementation Tasks**:
-- [ ] T019 [P] [US2] Configure integration test setup in package.json
-- [ ] T020 [P] [US2] Create integration test directory structure in tests/integration/
-- [ ] T021 [US2] Add integration test script to package.json
+- [X] T019 [P] [US2] Configure integration test setup in package.json
+- [X] T020 [P] [US2] Create integration test directory structure in tests/integration/
+- [X] T021 [US2] Add integration test script to package.json
 
 ## Phase 6: User Story 3 - E2E Testing Infrastructure Setup (Priority: P3)
 
@@ -92,19 +92,19 @@ Prerequisites that must complete before user stories.
 **Independent Test Criteria**: Framework set up, empty E2E test runs against local dev environment.
 
 **Tests**:
-- [ ] T022 [US3] Create empty E2E test file in tests/e2e/example.spec.ts
-- [ ] T023 [US3] Verify empty E2E test passes against local dev
+- [X] T022 [US3] Create empty E2E test file in tests/e2e/example.spec.ts
+- [X] T023 [US3] Verify empty E2E test passes against local dev
 
 **Implementation Tasks**:
-- [ ] T024 [P] [US3] Set up E2E test configuration in playwright.config.ts
-- [ ] T025 [P] [US3] Create E2E test directory structure in tests/e2e/
-- [ ] T026 [US3] Add E2E test script to package.json
+- [X] T024 [P] [US3] Set up E2E test configuration in playwright.config.ts
+- [X] T025 [P] [US3] Create E2E test directory structure in tests/e2e/
+- [X] T026 [US3] Add E2E test script to package.json
 
 ## Final Phase: Polish & Cross-Cutting Concerns
 
 Final adjustments and cross-cutting concerns.
 
-- [ ] T027 Update README.md with testing instructions
-- [ ] T028 Add test coverage reporting configuration
-- [ ] T029 Create .gitignore entries for test artifacts</content>
+- [X] T027 Update README.md with testing instructions
+- [X] T028 Add test coverage reporting configuration
+- [X] T029 Create .gitignore entries for test artifacts</content>
 <parameter name="filePath">/mnt/g/projects/web/game-mytownmap/specs/002-initial-testing-setup/tasks.md
