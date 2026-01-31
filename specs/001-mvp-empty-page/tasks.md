@@ -22,9 +22,9 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize Astro project with Bun dependencies
-- [ ] T003 [P] Configure Biome linting and formatting
+- [X] T001 Create project structure per implementation plan
+- [X] T002 Initialize Astro project with Bun dependencies
+- [X] T003 [P] Configure Biome linting and formatting
 - [ ] T004 [P] Configure Wrangler for Cloudflare Pages deployment
 
 ---
@@ -35,15 +35,15 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T005 Setup Astro config for static site generation
-- [ ] T006 [P] Create base page structure in src/pages/index.astro
-- [ ] T007 [P] Add basic CSS for responsive layout
+- [X] T005 Setup Astro config for static site generation
+- [X] T006 [P] Create base page structure in src/pages/index.astro
+- [X] T007 [P] Add basic CSS for responsive layout
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
 ---
 
-## Phase 3: User Story 1 - Build landing placeholder (Priority: P1) 🎯 MVP
+## Phase 3: User Story 1 - Build landing placeholder (Priority: P1) 🎯 MVP ✅ COMPLETED
 
 **Goal**: Deliver a minimal, testable web page at the site root that serves as a verified baseline for development, review, and deployment.
 
@@ -51,16 +51,16 @@
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] Add project name "MyTownMap" to src/pages/index.astro
-- [ ] T009 [US1] Add short description to src/pages/index.astro
-- [ ] T010 [US1] Ensure page is readable on mobile < 768px, tablet 768-1366px, desktop > 1366px
-- [ ] T011 [US1] Add graceful degradation for failed static assets (show only project name text)
+- [X] T008 [US1] Add project name "MyTownMap" to src/pages/index.astro
+- [X] T009 [US1] Add short description to src/pages/index.astro
+- [X] T010 [US1] Ensure page is readable on mobile < 768px, tablet 768-1366px, desktop > 1366px
+- [X] T011 [US1] Add graceful degradation for failed static assets (show only project name text)
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
 ---
 
-## Phase 4: User Story 2 - Deploy landing placeholder (Priority: P2)
+## Phase 4: User Story 2 - Deploy landing placeholder (Priority: P2) ⏸️ Deployment postponed
 
 **Goal**: Deploy the placeholder page to staging so it can be accessed online and confirm the deployment pipeline works.
 
@@ -85,10 +85,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T016 [US3] Test and verify readability on mobile < 768px
-- [ ] T017 [US3] Test and verify readability on tablet 768-1366px
-- [ ] T018 [US3] Test and verify readability on desktop > 1366px
-- [ ] T019 [US3] Ensure basic usability without specific accessibility standards
+- [X] T016 [US3] Test and verify readability on mobile < 768px
+- [X] T017 [US3] Test and verify readability on tablet 768-1366px
+- [X] T018 [US3] Test and verify readability on desktop > 1366px
+- [X] T019 [US3] Ensure basic usability without specific accessibility standards
 
 **Checkpoint**: At this point, User Story 3 should be fully functional and testable independently
 
@@ -98,9 +98,9 @@
 
 **Purpose**: Final touches and concerns that span multiple user stories
 
-- [ ] T020 Run Biome check for code quality
-- [ ] T021 Test Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)
-- [ ] T022 Update README with deployment instructions
+- [X] T020 Run Biome check for code quality
+- [X] T021 Test Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)
+- [X] T022 Update README with deployment instructions
 
 ---
 
