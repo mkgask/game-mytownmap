@@ -79,9 +79,21 @@ Cloudflare PagesのGitHub連携を使用して、mainブランチの更新で自
 
 ### 手動デプロイ (代替)
 
-手動でデプロイする場合:
+品質チェックとデプロイを一括実行:
 ```bash
-wrangler pages deploy dist
+bun run deploy
+```
+
+または、個別に実行:
+```bash
+# 品質チェック
+bun run check
+
+# ビルド
+bun run build
+
+# デプロイ
+bun run deploy:cf
 ```
 
 初回デプロイ時は、Cloudflareアカウントの認証とプロジェクトの設定が必要です。

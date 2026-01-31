@@ -22,6 +22,7 @@ This file serves as the central index for all development documentation in the T
 
 ## Specifications
 - [Empty page MVP Spec](specs/001-mvp-empty-page/spec.md) - Specification for the initial MVP landing page feature.
+- [Initial Testing Implementation Tasks](specs/002-initial-testing-setup/tasks.md) - Tasks for setting up initial testing infrastructure.
 
 ## Research and Other Documents
 - (Add links to research documents as they are created)
