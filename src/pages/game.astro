@@ -1,0 +1,67 @@
+---
+// Game page for the traffic jam reducing city-building game
+import GameCanvas from '@/components/astro/GameCanvas'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Traffic Jam Reducing City Builder</title>
+    <meta name="description" content="Build and manage cities while reducing traffic jams" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <main class="game-container">
+      <header class="game-header">
+        <h1>Traffic Jam Reducing City Builder</h1>
+        <p>Build your city and optimize traffic flow</p>
+      </header>
+
+      <div class="game-canvas-container">
+        <GameCanvas />
+      </div>
+    </main>
+
+    <style>
+      .game-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .game-header {
+        text-align: center;
+        padding: 2rem;
+        color: white;
+      }
+
+      .game-header h1 {
+        margin: 0 0 0.5rem 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .game-header p {
+        margin: 0;
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      .game-canvas-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      #game-canvas {
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        background: #1099bb;
+      }
+    </style>
+  </body>
+</html>

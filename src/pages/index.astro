@@ -40,6 +40,22 @@
 			color: #64748b;
 		}
 
+		.game-link {
+			display: inline-block;
+			margin-top: 2rem;
+			padding: 1rem 2rem;
+			background-color: #2563eb;
+			color: white;
+			text-decoration: none;
+			border-radius: 0.5rem;
+			font-weight: 600;
+			transition: background-color 0.2s;
+		}
+
+		.game-link:hover {
+			background-color: #1d4ed8;
+		}
+
 		@media (max-width: 768px) {
 			main {
 				padding: 1rem;
@@ -52,6 +68,11 @@
 			p {
 				font-size: 1.1rem;
 			}
+
+			.game-link {
+				font-size: 1rem;
+				padding: 0.75rem 1.5rem;
+			}
 		}
 	</style>
 </head>
@@ -59,6 +80,7 @@
 	<main>
 		<h1>MyTownMap</h1>
 		<p>Traffic Jam-Reducing City-Building Web Game</p>
+		<a href="/game" class="game-link">Play Game</a>
 	</main>
 </body>
 </html>

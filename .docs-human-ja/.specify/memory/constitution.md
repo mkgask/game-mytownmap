@@ -78,6 +78,10 @@
 - Playwright（UI / E2E テスト）
 - ブラウザ内 IndexedDB（セーブデータ用、localStorage は使用しない）
 
+### Import 規約
+- すべての import は一貫性と保守性のため @/ パスエイリアスを使用しなければならない。
+- 例: import { Game } from '@/libs/core/game/core/Game'
+
 ### ディレクトリ構成
 すべてのソースコードは `src/` 配下に置く:
 
@@ -112,6 +116,13 @@ src/
 - ECS、config、persistence を伴う libs/core/ 配下のコアドメインlogic
 - 共有モジュールとしての utilities と infrastructures
 - Context-First 設計: 各モジュールは単一の責任を持ち、独立してテスト可能
+
+### 依存関係構造
+- `libs/core/` が `libs/features/` を呼び出す（コアドメインlogicが機能をオーケストレーション）
+- `libs/features/` が `libs/infrastructures/` を呼び出す（機能がインフラサービスを使用）
+- `libs/utilities/` は上記の3つのいずれかのレイヤーから呼び出される（共有ユーティリティ）
+- 依存関係の方向は一般的に core → features → infrastructures で、utilities は全レイヤーからアクセス可能
+- 必要に応じて依存性の逆転も有効（例: core のインターフェースを features で実装）
 
 ### パフォーマンス
 - 目標 FPS: 60
@@ -168,4 +179,13 @@ src/
 - 準拠性：憲法の管理下にある領域に影響する PR は関連セクションを参照し、遵守を示す（テスト、ドキュメント、または理由）こと。メンテナは憲法に違反するマージをブロックできる。
 - レビューの周期：憲法は年次レビューを行うか、重大なインシデントが発生した場合に見直すこと。
 
-**Version**: 1.0.0 | **Ratified**: 2026-01-19 | **Last Amended**: 2026-01-19
+**Version**: 1.0.1 | **Ratified**: 2026-01-19 | **Last Amended**: 2026-02-07
+
+<!-- Sync Impact Report
+Version change: 1.0.0 → 1.0.1
+List of modified principles (old title → new title if renamed): None
+Added sections: Import 規約
+Removed sections: None
+Templates requiring updates (✅ updated / ⚠ pending): None
+Follow-up TODOs if any: None
+-->

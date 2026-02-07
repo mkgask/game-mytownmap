@@ -78,6 +78,10 @@
 - Playwright (UI / E2E testing)
 - IndexedDB in browser (Sava Data, Don't use localStorage)
 
+### Import Conventions
+- All imports MUST use the @/ path alias for consistency and maintainability.
+- Example: import { Game } from '@/libs/core/game/core/Game'
+
 ### Directory Structure
 All source code lives under `src/`:
 
@@ -112,6 +116,13 @@ src/
 - Core domain logic in libs/core/ with ECS, config, and persistence
 - Utilities and infrastructures as shared modules
 - Context-First design: each module has a single responsibility and is independently testable
+
+### Dependency Structure
+- `libs/core/` calls `libs/features/` (core domain logic orchestrates features)
+- `libs/features/` calls `libs/infrastructures/` (features use infrastructure services)
+- `libs/utilities/` is called by any of the above three layers (shared utilities)
+- Dependency direction generally flows: core → features → infrastructures, with utilities accessible from all layers
+- Dependency inversion is allowed when necessary (e.g., interfaces in core implemented by features)
 
 ### Performance
 - Target FPS: 60
@@ -170,4 +181,13 @@ src/
 - Compliance: PRs that touch areas governed by this Constitution MUST reference the relevant sections and demonstrate compliance (tests, docs, or rationale). Maintainers may block merges that violate the Constitution.
 - Review cadence: the Constitution SHOULD be reviewed annually or after any major incident that suggests changes are needed.
 
-**Version**: 1.0.0 | **Ratified**: 2026-01-19 | **Last Amended**: 2026-01-19
+**Version**: 1.0.1 | **Ratified**: 2026-01-19 | **Last Amended**: 2026-02-07
+
+<!-- Sync Impact Report
+Version change: 1.0.0 → 1.0.1
+List of modified principles (old title → new title if renamed): None
+Added sections: Import Conventions
+Removed sections: None
+Templates requiring updates (✅ updated / ⚠ pending): None
+Follow-up TODOs if any: None
+-->

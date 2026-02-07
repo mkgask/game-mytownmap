@@ -23,7 +23,7 @@ Use this checklist for initial project setup tasks to establish a solid foundati
 Focus on MVP and iterative development with Test-First in mind. Ensure security, performance, and scalability are integrated early.
 
 1. [x] Astro MVP: Empty output build, deploy, and run (proof of existence) – Include basic empty test implementation for proof of existence
-2. [ ] PixiJS Game MVP: Basic game canvas, rendering setup, and empty scene (Test-First: Write rendering tests before implementation)
+2. [x] PixiJS Game MVP: Basic game canvas, rendering setup, and empty scene (Test-First: Write rendering tests before implementation)
 3. [ ] Test Environment Setup (CI/CD Pipeline, test frameworks like Jest or Selenium) - Postponed
 4. [x] Unit Testing Initial Implementation (Test-First: Write tests before code)
 5. [x] Integration Testing Initial Implementation

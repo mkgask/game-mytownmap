@@ -1,0 +1,40 @@
+---
+// GameCanvas component for PixiJS game rendering
+// Astro component that initializes PixiJS application and renders the game canvas
+import { Game } from '@/libs/core/game/core/Game'
+---
+
+<div id="game-canvas"></div>
+
+<script>
+import { Game } from '@/libs/core/game/core/Game'
+
+// Initialize game using Game class
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // Get canvas container
+    const container = document.getElementById('game-canvas')
+    if (!container) {
+      throw new Error('Game canvas container not found')
+    }
+
+    // Create game instance
+    const game = new Game({
+      container,
+      width: 800,
+      height: 600,
+      backgroundColor: 0x1099bb,
+      antialias: true
+    })
+
+    // Initialize and start the game
+    await game.initialize()
+    game.start()
+
+    // Store game instance for potential cleanup
+    (window as any).gameInstance = game
+  } catch (error) {
+    console.error('Failed to initialize game:', error)
+  }
+})
+</script>

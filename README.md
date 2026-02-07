@@ -9,7 +9,92 @@
 - **Bun**: ビルド、パッケージ管理、ユニットテスト用
 - **Biome**: linter / formatter
 - **Astro**: ベースフレームワーク
+- **PixiJS v8**: 2Dゲームレンダリングエンジン
+- **TypeScript**: 型安全な開発
 - **Cloudflare Wrangler**: Cloudflare Pagesへのデプロイ用
+
+## ゲームアーキテクチャ
+
+### コアコンポーネント
+
+- **Game**: メインゲームクラス。全体のライフサイクルとシーン管理を担当
+- **Renderer**: PixiJS Application の初期化と管理
+- **Scene**: ゲームシーン（画面）の管理。PIXI.Container を拡張
+
+### ディレクトリ構造
+
+```
+src/
+├── libs/core/game/
+│   ├── core/Game.ts          # メインゲームクラス
+│   ├── rendering/Renderer.ts # PixiJS レンダラー管理
+│   └── scenes/Scene.ts       # シーン管理
+├── components/astro/
+│   └── GameCanvas.astro      # ゲームキャンバスコンポーネント
+└── pages/
+    ├── index.astro           # ランディングページ
+    └── game.astro            # ゲームページ
+```
+
+### ゲーム開発ガイド
+
+#### 基本的なゲーム作成
+
+1. **Game インスタンス作成**:
+```typescript
+import { Game } from '@/libs/core/game/core/Game'
+
+const game = new Game({
+  container: document.getElementById('game-canvas'),
+  width: 800,
+  height: 600,
+  backgroundColor: 0x1099bb
+})
+```
+
+2. **ゲーム初期化と開始**:
+```typescript
+await game.initialize()
+game.start()
+```
+
+3. **シーン管理**:
+```typescript
+import { Scene } from '@/libs/core/game/scenes/Scene'
+
+// 新しいシーン作成
+const scene = new Scene('my-scene')
+await scene.initialize()
+
+// ゲームオブジェクト追加
+const sprite = PIXI.Sprite.from('image.png')
+scene.addGameObject(sprite)
+
+// シーン切り替え
+game.setScene(scene)
+```
+
+#### テスト実行
+
+ゲーム開発中のテスト実行:
+```bash
+# ユニットテスト（Game/Scene/Renderer）
+bun run test:unit
+
+# 統合テスト（フルゲーム初期化）
+bun run test:integration
+
+# E2Eテスト（ブラウザでのゲームページ動作）
+bun run test:e2e
+```
+
+#### パフォーマンス監視
+
+開発中にフレームレートを確認:
+```typescript
+// ブラウザコンソールで確認可能
+console.log('FPS:', game.getRenderer().getApplication()?.ticker.FPS)
+```
 
 ## 必要条件 (MVP最小限)
 
