@@ -4,8 +4,8 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'bun:test'
-import { Game } from '../../../src/libs/core/game/core/Game'
-import { Scene } from '../../../src/libs/core/game/scenes/Scene'
+import { Game } from '../../../src/libs/game/core/Game'
+import { Scene } from '../../../src/libs/game/features/scenes/Scene'
 import * as PIXI from 'pixi.js'
 
 describe('Game Integration', () => {

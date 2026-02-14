@@ -78,36 +78,37 @@
 - Playwright (UI / E2E testing)
 - IndexedDB in browser (Sava Data, Don't use localStorage)
 
+### Device Support
+- Desktop: 1366px+ width
+- Tablet: 768px+ width
+- Mobile: 320px+ width
+
 ### Import Conventions
 - All imports MUST use the @/ path alias for consistency and maintainability.
-- Example: import { Game } from '@/libs/core/game/core/Game'
+- Example: import { Game } from '@/libs/game/core/Game'
 
 ### Directory Structure
 All source code lives under `src/`:
 
 ```
 src/
-    pages/
-        index.astro    # link to /play
-        play.astro
-    app/
-        bootstrap.ts    # bootstrap for the game displayed in play.astro
+    components/    # shared UI components
+        ErrorBoundary.tsx
+        astro/
+            GameCanvas.astro
     libs/    # game libraries
-        features/
-            title/
-                scene.ts
-            config/
-                scene.ts
-            play/
-                scene.ts
-        core/    # game domain logic
-            scenes/
-                management.ts
-            ecs/
-            config/
-            persistence/
-        instructures/
-        utilities/
+        game/
+            core/
+                Game.ts    # main game class
+            features/
+                rendering/
+                    Renderer.ts    # PixiJS renderer management
+                scenes/
+                    Scene.ts    # base scene class
+            types/    # shared type definitions
+    pages/    # Astro pages
+        index.astro
+        game.astro
 ```
 
 ### Project Structure

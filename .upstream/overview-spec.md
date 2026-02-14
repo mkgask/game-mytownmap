@@ -22,6 +22,7 @@ The game emphasizes simulation of real-world urban planning challenges, incorpor
 ## Technical Constraints and Requirements
 
 - **Technology Stack**: PixiJS for 2D rendering, bitECS for ECS runtime, Bun for build/package management/unit tests, Cloudflare Pages for hosting, Astro as base framework, New Relic for error monitoring, Playwright for UI/E2E testing, IndexedDB for save data (no localStorage).
+- **Device Support**: Desktop: 1366px+ width, Tablet: 768px+ width, Mobile: 320px+ width.
 - **Performance**: Target FPS of 60 to ensure smooth gameplay.
 - **Localization**: Support for English and Japanese languages.
 - **Security**: Adhere to web security best practices including HTTPS/TLS, CSP, CORS, input validation, authentication, rate limiting, and game-specific considerations like authoritative server state, anti-cheat measures, and privacy/data minimization.

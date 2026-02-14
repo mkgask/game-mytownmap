@@ -4,8 +4,9 @@
  */
 
 import * as PIXI from 'pixi.js'
-import { Renderer } from '../rendering/Renderer'
-import { Scene } from '../scenes/Scene'
+import { Renderer } from '@/libs/game/features/rendering/Renderer'
+import { Scene } from '@/libs/game/features/scenes/Scene'
+import { TitleScene } from '@/libs/game/features/scenes/TitleScene'
 
 /**
  * Configuration options for the Game
@@ -66,7 +67,7 @@ export class Game {
       this.renderer.attachToCanvas(this.config.container)
 
       // Create and initialize the main scene
-      this.currentScene = new Scene('main')
+      this.currentScene = new TitleScene(() => this.transitionToGameScene())
       await this.currentScene.initialize()
 
       // Add scene to application stage
@@ -155,19 +156,20 @@ export class Game {
   }
 
   /**
-   * Gets the current scene
-   * @returns The current scene or null
+   * Transitions from title scene to game scene
    */
-  public getCurrentScene(): Scene | null {
-    return this.currentScene
+  private transitionToGameScene(): void {
+    // Create game scene (placeholder - will be replaced with actual GameScene)
+    const gameScene = new Scene('GameScene')
+    this.setScene(gameScene)
   }
 
   /**
-   * Gets the renderer instance
-   * @returns The renderer
+   * Gets the current scene
+   * @returns The current scene or null if none set
    */
-  public getRenderer(): Renderer {
-    return this.renderer
+  public getCurrentScene(): Scene | null {
+    return this.currentScene
   }
 
   /**

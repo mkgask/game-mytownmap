@@ -22,6 +22,7 @@
 ## 技術制約と要件
 
 - **技術スタック**: PixiJS for 2D rendering, bitECS for ECS runtime, Bun for build/package management/unit tests, Cloudflare Pages for hosting, Astro as base framework, New Relic for error monitoring, Playwright for UI/E2E testing, IndexedDB for save data (no localStorage).
+- **Device Support**: Desktop: 1366px+ width, Tablet: 768px+ width, Mobile: 320px+ width.
 - **パフォーマンス**: スムーズなゲームプレイを確保するために60 FPSを目標。
 - **ローカライズ**: 英語と日本語の言語をサポート。
 - **セキュリティ**: HTTPS/TLS、CSP、CORS、入力検証、認証、レート制限を含むウェブセキュリティのベストプラクティスに従い、権威あるサーバーステート、アンチチート対策、プライバシー/データ最小化などのゲーム特有の考慮事項。

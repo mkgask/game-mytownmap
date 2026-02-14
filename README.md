@@ -25,15 +25,22 @@
 
 ```
 src/
-├── libs/core/game/
-│   ├── core/Game.ts          # メインゲームクラス
-│   ├── rendering/Renderer.ts # PixiJS レンダラー管理
-│   └── scenes/Scene.ts       # シーン管理
-├── components/astro/
-│   └── GameCanvas.astro      # ゲームキャンバスコンポーネント
+├── libs/game/
+│   ├── core/
+│   │   └── Game.ts            # メインゲームクラス
+│   ├── features/
+│   │   ├── rendering/
+│   │   │   └── Renderer.ts    # PixiJS レンダラー管理
+│   │   └── scenes/
+│   │       └── Scene.ts       # シーン管理
+│   └── types/                 # 共有型定義
+├── components/
+│   ├── ErrorBoundary.tsx      # エラーバウンダリコンポーネント
+│   └── astro/
+│       └── GameCanvas.astro   # ゲームキャンバスコンポーネント
 └── pages/
-    ├── index.astro           # ランディングページ
-    └── game.astro            # ゲームページ
+    ├── index.astro            # ランディングページ
+    └── game.astro             # ゲームページ
 ```
 
 ### ゲーム開発ガイド

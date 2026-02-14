@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'bun:test'
-import { Renderer } from '@/libs/core/game/rendering/Renderer'
+import { Renderer } from '@/libs/game/features/rendering/Renderer'
 import * as PIXI from 'pixi.js'
 
 describe('Renderer', () => {

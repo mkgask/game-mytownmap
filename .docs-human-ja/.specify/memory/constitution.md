@@ -78,36 +78,37 @@
 - Playwright（UI / E2E テスト）
 - ブラウザ内 IndexedDB（セーブデータ用、localStorage は使用しない）
 
+### Device Support
+- Desktop: 1366px+ width
+- Tablet: 768px+ width
+- Mobile: 320px+ width
+
 ### Import 規約
 - すべての import は一貫性と保守性のため @/ パスエイリアスを使用しなければならない。
-- 例: import { Game } from '@/libs/core/game/core/Game'
+- 例: import { Game } from '@/libs/game/core/Game'
 
 ### ディレクトリ構成
 すべてのソースコードは `src/` 配下に置く:
 
 ```
 src/
-    pages/
-        index.astro    # /play へのリンクのみ
-        play.astro
-    app/
-        bootstrap.ts    # play.astro で表示するゲームの bootstrap
+    components/    # 共有 UI コンポーネント
+        ErrorBoundary.tsx
+        astro/
+            GameCanvas.astro
     libs/    # ゲーム用ライブラリ
-        features/
-            title/
-                scene.ts
-            config/
-                scene.ts
-            play/
-                scene.ts
-        core/    # ゲームのドメインロジック
-            scenes/
-                management.ts
-            ecs/
-            config/
-            persistence/
-        instructures/
-        utilities/
+        game/
+            core/
+                Game.ts    # メインゲームクラス
+            features/
+                rendering/
+                    Renderer.ts    # PixiJS レンダラー管理
+                scenes/
+                    Scene.ts    # ベースシーンクラス
+            types/    # 共有型定義
+    pages/    # Astro ページ
+        index.astro
+        game.astro
 ```
 
 ### プロジェクト構造

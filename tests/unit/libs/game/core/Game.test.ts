@@ -5,6 +5,8 @@
 
 import { describe, it, expect, beforeEach, afterEach, mock } from 'bun:test'
 import * as PIXI from 'pixi.js'
+import { Game } from '@/libs/game/core/Game'
+import { TitleScene } from '@/libs/game/features/scenes/TitleScene'
 
 describe('Game', () => {
   let mockRenderer: any
@@ -122,6 +124,21 @@ describe('Game', () => {
         expect(error).toBeInstanceOf(Error)
         expect((error as Error).message).toBe('Init failed')
       }
+    })
+  })
+
+  describe('Scene Management', () => {
+    it('should support setting TitleScene', () => {
+      // Create a mock container for testing
+      const mockContainer = { appendChild: mock(() => {}) } as any
+
+      const game = new Game({ container: mockContainer })
+      const titleScene = new TitleScene()
+
+      game.setScene(titleScene)
+
+      expect(game.getCurrentScene()).toBeInstanceOf(TitleScene)
+      expect(game.getCurrentScene()?.getName()).toBe('TitleScene')
     })
   })
 })
